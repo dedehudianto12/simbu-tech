@@ -3,7 +3,7 @@
     class="fixed top-0 left-0 right-0 h-[72px] z-100 border-b border-border bg-[rgba(8,10,12,0.8)] backdrop-blur-[20px]"
   >
     <div
-      class="mx-auto flex h-full max-w-[1400px] items-center justify-between px-15 max-md:px-6"
+      class="mx-auto flex h-full max-w-[1400px] items-center justify-between max-md:px-6"
     >
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3">
