@@ -30,7 +30,7 @@ function draw() {
   const step = 60;
 
   // Draw grid lines
-  ctx.strokeStyle = "rgba(138, 155, 174, 0.06)";
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
   ctx.lineWidth = 0.5;
 
   for (let x = 0; x <= w; x += step) {
@@ -48,7 +48,7 @@ function draw() {
   }
 
   // Draw dots at intersections (top 600px only)
-  ctx.fillStyle = "rgba(138, 155, 174, 0.12)";
+  ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
   const maxDotY = Math.min(600, h);
   for (let x = 0; x <= w; x += step) {
     for (let y = 0; y <= maxDotY; y += step) {

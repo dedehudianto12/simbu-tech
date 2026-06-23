@@ -1,24 +1,24 @@
 <template>
   <section
     id="clients"
-    class="border-t border-border px-15 py-[100px] max-md:px-6 max-md:py-20"
+    class="border-t border-border px-15 py-[100px] max-md:px-6 max-md:py-20 bg-black"
   >
     <div class="mx-auto max-w-[1400px]">
       <!-- Header -->
       <div class="mb-16 reveal">
         <span class="section-tag">Trusted By</span>
-        <h2 class="section-title">Our <span class="text-red">Clients</span></h2>
+        <h2 class="section-title">Our <span class="text-white">Clients</span></h2>
       </div>
 
       <!-- Grid -->
       <div
-        class="grid grid-cols-6 gap-0.5 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2"
+        class="grid grid-cols-6 gap-0 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 client-grid"
       >
         <div
           v-for="(client, i) in clients"
           :key="client"
           class="client-cell reveal"
-          :style="{ transitionDelay: `${i * 0.05}s` }"
+          :style="{ transitionDelay: `${i * 0.03}s` }"
         >
           {{ client }}
         </div>
@@ -46,46 +46,50 @@ const clients = [
 
 <style scoped>
 .section-tag {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--red);
-  opacity: 0.6;
+  color: var(--muted);
   margin-bottom: 12px;
   display: block;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(32px, 4vw, 42px);
   font-weight: 700;
   color: var(--text);
   line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.client-grid {
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
 .client-cell {
   aspect-ratio: 2/1;
-  border: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--muted);
-  padding: 12px;
+  padding: 16px;
   transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .client-cell:hover {
-  background: rgba(227, 30, 36, 0.04);
+  background-color: rgba(255, 255, 255, 0.02);
   color: var(--text);
-  border-color: rgba(227, 30, 36, 0.2);
 }
 </style>

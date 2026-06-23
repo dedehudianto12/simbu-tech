@@ -9,8 +9,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Oxanium: [300, 400, 600, 700, 800],
-      Syne: [400, 500, 700],
+      Inter: [300, 400, 500, 600, 700, 800],
     },
     display: "swap",
   },

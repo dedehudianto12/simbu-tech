@@ -1,25 +1,26 @@
 <template>
-  <section id="why-choose-us" class="why-choose-us">
+  <section id="why-choose-us" class="why-choose-us bg-black">
     <div class="mx-auto max-w-[1400px]">
-      <!-- Eyebrow + Heading, konsisten dengan pola "What We Do" / "Trusted By" di section lain -->
-      <p class="eyebrow">Why Simbu</p>
-      <h2 class="heading">Why Enterprises Choose Simbu</h2>
-      <p class="subheading">
-        We don't just deploy infrastructure — we build long-term technology
-        partnerships.
+      <!-- Eyebrow + Heading -->
+      <span class="section-tag">Why Simbu</span>
+      <h2 class="section-title">Why Enterprises Choose Simbu</h2>
+      <p class="section-desc">
+        We don't just deploy infrastructure — we build long-term technology partnerships.
       </p>
 
-      <div class="grid">
+      <div class="grid grid-cols-4 gap-4 max-lg:grid-cols-2 max-md:grid-cols-1 mt-12">
         <article
           v-for="(item, index) in reasons"
           :key="item.title"
           class="card"
         >
-          <span class="index"
-            >{{ String(index + 1).padStart(2, "0") }} /
-            {{ String(reasons.length).padStart(2, "0") }}</span
-          >
-          <span class="icon" aria-hidden="true">{{ item.icon }}</span>
+          <div class="flex justify-between items-center mb-6">
+            <span class="icon-box" aria-hidden="true">{{ item.icon }}</span>
+            <span class="index"
+              >{{ String(index + 1).padStart(2, "0") }} /
+              {{ String(reasons.length).padStart(2, "0") }}</span
+            >
+          </div>
           <h3 class="card-title">{{ item.title }}</h3>
           <p class="card-desc">{{ item.description }}</p>
         </article>
@@ -28,10 +29,8 @@
   </section>
 </template>
 
-<script setup>
-// TODO: ganti angka/klaim di bawah ini dengan data aktual Simbu sebelum publish.
-// - response time SLA (sekarang placeholder "<2 hours")
-// - jumlah project/klien (sekarang reuse "12+" dari stats bar Hero)
+<script setup lang="ts">
+// Reasons data
 const reasons = [
   {
     icon: "✓",
@@ -43,7 +42,7 @@ const reasons = [
     icon: "⏱",
     title: "24/7 Support & Rapid Response",
     description:
-      "Critical issues don\u2019t wait for business hours. Our support team is available around the clock, with a target response time of under 2 hours.",
+      "Critical issues don't wait for business hours. Our support team is available around the clock, with a target response time of under 2 hours.",
   },
   {
     icon: "⚙",
@@ -55,111 +54,100 @@ const reasons = [
     icon: "▲",
     title: "Proven Track Record",
     description:
-      "Trusted by 12+ enterprise clients across ports, logistics, manufacturing, and retail — including several of Indonesia\u2019s largest operators.",
+      "Trusted by 12+ enterprise clients across ports, logistics, manufacturing, and retail — including several of Indonesia's largest operators.",
   },
 ];
 </script>
 
 <style scoped>
-/* Token warna & font di bawah ini PLACEHOLDER — sesuaikan dengan variabel/Tailwind config
-   yang sudah dipakai di website kamu (warna utama, font Hero, dll) supaya konsisten. */
 .why-choose-us {
-  padding: 6rem 1.5rem;
+  padding: 100px 60px;
 }
 
-.container {
-  max-width: 72rem;
-  margin: 0 auto;
+@media (max-width: 768px) {
+  .why-choose-us {
+    padding: 80px 24px;
+  }
 }
 
-.eyebrow {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+.section-tag {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--accent, #2563eb);
-  margin-bottom: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: block;
 }
 
-.heading {
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 42px);
   font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.75rem;
-  color: var(--text-primary, #0f172a);
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.subheading {
-  font-size: 1.05rem;
-  color: var(--text-secondary, #475569);
-  max-width: 40rem;
-  margin-bottom: 3rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.section-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 480px;
+  margin-top: 16px;
+  line-height: 1.6;
 }
 
 .card {
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 0.5rem;
-  padding: 1.75rem 1.5rem;
-  background: var(--bg-card, #ffffff);
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px -8px rgba(15, 23, 42, 0.12);
+  border-color: #333333;
+  background-color: #0c0c0c;
 }
 
 .index {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--text-tertiary, #94a3b8);
-  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.6;
 }
 
-.icon {
-  display: block;
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
+.icon-box {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .card-title {
-  font-size: 1.05rem;
+  font-family: var(--font-body);
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--text-primary, #0f172a);
+  margin-bottom: 12px;
+  color: #ffffff;
 }
 
 .card-desc {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--text-secondary, #475569);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card {
-    transition: none;
-  }
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
 }
 </style>

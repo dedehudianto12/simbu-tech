@@ -1,21 +1,15 @@
 <template>
-  <section id="about" class="section-padding border-t border-border">
+  <section id="about" class="section-padding border-t border-border bg-black">
     <div
       class="mx-auto grid max-w-[1400px] grid-cols-2 items-center gap-[100px] max-lg:grid-cols-1 max-lg:gap-15"
     >
-      <!-- Left: Animated Rings -->
+      <!-- Left: Animated Squares -->
       <div class="about-visual reveal">
-        <div class="ring ring-1">
-          <span class="ring-dot"></span>
-        </div>
-        <div class="ring ring-2">
-          <span class="ring-dot"></span>
-        </div>
-        <div class="ring ring-3">
-          <span class="ring-dot"></span>
-        </div>
-        <div class="ring-core">
-          <span class="ring-core-text">ST</span>
+        <div class="square square-1"></div>
+        <div class="square square-2"></div>
+        <div class="square square-3"></div>
+        <div class="square-core">
+          <span class="square-core-text">ST</span>
         </div>
       </div>
 
@@ -25,13 +19,13 @@
           <span class="section-tag">Who We Are</span>
           <h2 class="section-title">
             Technical Excellence,<br />
-            <span class="text-red">Personal Touch.</span>
+            <span class="text-white">Personal Touch.</span>
           </h2>
         </div>
 
         <p
           class="max-w-[520px] text-[15px] leading-[1.7] text-muted reveal"
-          style="transition-delay: 0.1s"
+          style="transition-delay: 0.05s"
         >
           PT Simbu Teknologi Indonesia was founded in 2023 with a clear mission:
           to deliver enterprise-grade IT solutions with a personal, consultative
@@ -39,27 +33,27 @@
           port operators and manufacturing to retail and logistics.
         </p>
 
-        <div class="mt-2 grid grid-cols-2 gap-5 max-md:grid-cols-1">
-          <div class="highlight reveal" style="transition-delay: 0.15s">
-            <span class="font-display text-sm font-semibold text-text"
+        <div class="mt-2 grid grid-cols-2 gap-4 max-md:grid-cols-1">
+          <div class="highlight reveal" style="transition-delay: 0.1s">
+            <span class="font-body text-sm font-semibold text-white"
               >Founded 2023</span
             >
             <span class="text-xs text-muted">Jakarta, Indonesia</span>
           </div>
-          <div class="highlight reveal" style="transition-delay: 0.2s">
-            <span class="font-display text-sm font-semibold text-text"
+          <div class="highlight reveal" style="transition-delay: 0.15s">
+            <span class="font-body text-sm font-semibold text-white"
               >System Integrator</span
             >
             <span class="text-xs text-muted">End-to-end IT solutions</span>
           </div>
-          <div class="highlight reveal" style="transition-delay: 0.25s">
-            <span class="font-display text-sm font-semibold text-text"
+          <div class="highlight reveal" style="transition-delay: 0.2s">
+            <span class="font-body text-sm font-semibold text-white"
               >Certified Team</span
             >
             <span class="text-xs text-muted">Up-to-date skills & certs</span>
           </div>
-          <div class="highlight reveal" style="transition-delay: 0.3s">
-            <span class="font-display text-sm font-semibold text-text"
+          <div class="highlight reveal" style="transition-delay: 0.25s">
+            <span class="font-body text-sm font-semibold text-white"
               >24/7 Support</span
             >
             <span class="text-xs text-muted">Always-on IT services</span>
@@ -71,7 +65,7 @@
 </template>
 
 <style scoped>
-/* Visual — Rings */
+/* Visual — Concentric Squares */
 .about-visual {
   position: relative;
   width: 100%;
@@ -79,75 +73,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 500px;
+  max-width: 440px;
   margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
   .about-visual {
-    max-width: 350px;
+    max-width: 320px;
   }
 
-  .ring-1 {
-    width: 300px;
-    height: 300px;
+  .square-1 {
+    width: 280px !important;
+    height: 280px !important;
   }
-  .ring-2 {
-    width: 210px;
-    height: 210px;
+  .square-2 {
+    width: 180px !important;
+    height: 180px !important;
   }
-  .ring-3 {
-    width: 120px;
-    height: 120px;
+  .square-3 {
+    width: 100px !important;
+    height: 100px !important;
   }
 }
 
-.ring {
+.square {
   position: absolute;
-  border-radius: 50%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
 }
 
-.ring-1 {
-  width: 400px;
-  height: 400px;
-  border: 1px solid rgba(227, 30, 36, 0.15);
-  animation: ringRotate1 30s linear infinite;
+.square-1 {
+  width: 360px;
+  height: 360px;
+  animation: squareRotate1 50s linear infinite;
 }
 
-.ring-2 {
-  width: 280px;
-  height: 280px;
-  border: 1px solid rgba(227, 30, 36, 0.3);
-  animation: ringRotate2 20s linear infinite reverse;
+.square-2 {
+  width: 240px;
+  height: 240px;
+  animation: squareRotate2 40s linear infinite reverse;
 }
 
-.ring-3 {
-  width: 160px;
-  height: 160px;
-  border: 1px solid rgba(227, 30, 36, 0.6);
-  box-shadow:
-    0 0 20px rgba(227, 30, 36, 0.1),
-    inset 0 0 20px rgba(227, 30, 36, 0.05);
-  animation: ringRotate3 10s linear infinite;
+.square-3 {
+  width: 140px;
+  height: 140px;
+  animation: squareRotate1 30s linear infinite;
 }
 
-@keyframes ringRotate1 {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes ringRotate2 {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes ringRotate3 {
+@keyframes squareRotate1 {
   from {
     transform: rotate(0deg);
   }
@@ -156,30 +129,21 @@
   }
 }
 
-.ring-dot {
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 12px var(--red-glow);
+@keyframes squareRotate2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.ring-core {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 1px solid rgba(227, 30, 36, 0.5);
-  background: radial-gradient(
-    circle,
-    rgba(227, 30, 36, 0.3),
-    rgba(227, 30, 36, 0.08) 50%,
-    transparent 70%
-  );
-  box-shadow: 0 0 30px rgba(227, 30, 36, 0.15);
+.square-core {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #0a0a0a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,40 +151,47 @@
   z-index: 2;
 }
 
-.ring-core-text {
+.square-core-text {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
-  color: var(--red);
-  text-shadow: 0 0 20px rgba(227, 30, 36, 0.5);
+  color: #ffffff;
 }
 
 /* Section tag & title */
 .section-tag {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--red);
-  opacity: 0.6;
+  color: var(--muted);
   margin-bottom: 12px;
   display: block;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.5vw, 42px);
+  font-size: clamp(32px, 4vw, 42px);
   font-weight: 700;
   color: var(--text);
-  line-height: 1.2;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 /* Highlights */
 .highlight {
-  border-left: 2px solid var(--red);
-  padding-left: 16px;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.highlight:hover {
+  border-color: #333333;
+  background-color: #0c0c0c;
 }
 </style>

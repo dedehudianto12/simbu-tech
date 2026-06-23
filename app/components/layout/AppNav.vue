@@ -1,29 +1,22 @@
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 h-[72px] z-100 border-b border-border bg-[rgba(8,10,12,0.8)] backdrop-blur-[20px]"
+    class="fixed top-0 left-0 right-0 h-[72px] z-100 border-b border-border bg-black/70 backdrop-blur-[12px]"
   >
     <div
       class="mx-auto flex h-full max-w-[1400px] items-center justify-between px-15 max-md:px-6"
     >
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3">
-        <div class="flex w-7 flex-col gap-[3px]">
-          <span class="block h-[3px] w-full rounded-[1px] bg-steel"></span>
-          <span
-            class="block h-[3px] w-3/4 rounded-[1px] bg-steel opacity-60"
-          ></span>
-          <span
-            class="stripe-3 block h-[3px] w-1/2 rounded-[1px] bg-red"
-          ></span>
-        </div>
-        <span class="font-display text-lg font-bold tracking-[0.15em]">
-          <span class="text-red">SIMBU</span
-          ><span class="text-steel font-normal">TECH</span>
+      <a href="/" class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-white" viewBox="0 0 100 100" fill="currentColor">
+          <polygon points="50,15 90,85 10,85" />
+        </svg>
+        <span class="font-display text-sm font-bold tracking-[0.2em] text-white">
+          SIMBU<span class="text-muted font-normal">TECH</span>
         </span>
       </a>
 
       <!-- Center Links -->
-      <div class="flex gap-10 max-md:hidden">
+      <div class="flex gap-8 max-md:hidden">
         <a href="/#services" class="nav-link">Services</a>
         <a href="/#clients" class="nav-link">Clients</a>
         <a href="/#about" class="nav-link">About</a>
@@ -36,7 +29,7 @@
         rel="noopener"
         class="nav-cta max-md:hidden"
       >
-        Contact Us →
+        Contact Us
       </a>
 
       <!-- Mobile Toggle -->
@@ -62,9 +55,9 @@
         href="https://wa.link/480xy0"
         target="_blank"
         rel="noopener"
-        class="nav-cta"
+        class="nav-cta text-center"
         @click="mobileOpen = false"
-        >Contact Us →</a
+        >Contact Us</a
       >
     </div>
   </nav>
@@ -77,66 +70,32 @@ const mobileOpen = ref(false);
 </script>
 
 <style scoped>
-/* Stripe glow */
-.stripe-3 {
-  box-shadow: 0 2px 12px rgba(227, 30, 36, 0.5);
-}
-
 /* Nav link */
 .nav-link {
-  font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 14px;
   color: var(--muted);
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--red);
-  transition: width 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--red);
-}
-
-.nav-link:hover::after {
-  width: 100%;
+  color: var(--text);
 }
 
 /* CTA */
 .nav-cta {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--red);
-  padding: 10px 24px;
-  border: 1px solid var(--red);
-  clip-path: polygon(
-    0 0,
-    calc(100% - 12px) 0,
-    100% 12px,
-    100% 100%,
-    12px 100%,
-    0 calc(100% - 12px)
-  );
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #000000;
+  background: #ffffff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.2s ease, opacity 0.2s ease;
 }
 
 .nav-cta:hover {
-  background: var(--red);
-  color: var(--bg);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 /* Mobile Toggle */
@@ -195,7 +154,7 @@ const mobileOpen = ref(false);
   flex-direction: column;
   gap: 24px;
   padding: 32px 60px;
-  background: rgba(8, 10, 12, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
 }
