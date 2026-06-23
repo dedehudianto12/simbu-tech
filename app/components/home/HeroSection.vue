@@ -1,6 +1,6 @@
 <template>
   <section
-    class="hero relative flex min-h-screen items-center overflow-hidden pt-[72px] px-15 max-md:flex-col max-md:justify-center max-md:px-6"
+    class="mx-auto max-w-[1400px] hero relative flex min-h-screen items-center pt-[72px] max-md:flex-col max-md:justify-center max-md:px-6"
   >
     <!-- Scanline overlay -->
     <div class="hero-scanlines"></div>
