@@ -1,7 +1,7 @@
 <template>
   <canvas
     ref="canvasRef"
-    class="fixed top-0 left-0 w-screen h-screen z-0 opacity-40 pointer-events-none"
+    class="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none"
   ></canvas>
 </template>
 
@@ -30,7 +30,9 @@ function draw() {
   const step = 60;
 
   // Draw grid lines
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.02)";
+  canvas.style.opacity = "0.4";
+
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
   ctx.lineWidth = 0.5;
 
   for (let x = 0; x <= w; x += step) {

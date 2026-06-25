@@ -24,6 +24,9 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       title: "Simbu Teknologi — We Deliver Business Value",
+      htmlAttrs: {
+        class: "dark",
+      },
       meta: [
         {
           name: "description",

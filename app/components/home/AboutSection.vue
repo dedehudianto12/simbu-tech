@@ -1,5 +1,8 @@
 <template>
-  <section id="about" class="section-padding border-t border-border bg-black">
+  <section
+    id="about"
+    class="section-padding dark:border-border bg-white dark:bg-black"
+  >
     <div
       class="mx-auto grid max-w-[1400px] grid-cols-2 items-center gap-[100px] max-lg:grid-cols-1 max-lg:gap-15"
     >
@@ -19,7 +22,7 @@
           <span class="section-tag">Who We Are</span>
           <h2 class="section-title">
             Technical Excellence,<br />
-            <span class="text-white">Personal Touch.</span>
+            <span style="color: var(--text)">Personal Touch.</span>
           </h2>
         </div>
 
@@ -35,25 +38,33 @@
 
         <div class="mt-2 grid grid-cols-2 gap-4 max-md:grid-cols-1">
           <div class="highlight reveal" style="transition-delay: 0.1s">
-            <span class="font-body text-sm font-semibold text-white"
+            <span
+              class="font-body text-sm font-semibold"
+              style="color: var(--text)"
               >Founded 2023</span
             >
             <span class="text-xs text-muted">Jakarta, Indonesia</span>
           </div>
           <div class="highlight reveal" style="transition-delay: 0.15s">
-            <span class="font-body text-sm font-semibold text-white"
+            <span
+              class="font-body text-sm font-semibold"
+              style="color: var(--text)"
               >System Integrator</span
             >
             <span class="text-xs text-muted">End-to-end IT solutions</span>
           </div>
           <div class="highlight reveal" style="transition-delay: 0.2s">
-            <span class="font-body text-sm font-semibold text-white"
+            <span
+              class="font-body text-sm font-semibold"
+              style="color: var(--text)"
               >Certified Team</span
             >
             <span class="text-xs text-muted">Up-to-date skills & certs</span>
           </div>
           <div class="highlight reveal" style="transition-delay: 0.25s">
-            <span class="font-body text-sm font-semibold text-white"
+            <span
+              class="font-body text-sm font-semibold"
+              style="color: var(--text)"
               >24/7 Support</span
             >
             <span class="text-xs text-muted">Always-on IT services</span>
@@ -143,7 +154,7 @@
   height: 64px;
   border-radius: 8px;
   border: 1px solid var(--border);
-  background: #0a0a0a;
+  background: var(--card-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,7 +166,7 @@
   font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text);
 }
 
 /* Section tag & title */
@@ -180,18 +191,20 @@
 
 /* Highlights */
 .highlight {
-  background: #0a0a0a;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .highlight:hover {
-  border-color: #333333;
-  background-color: #0c0c0c;
+  border-color: var(--border-red);
+  background-color: var(--bg2);
 }
 </style>

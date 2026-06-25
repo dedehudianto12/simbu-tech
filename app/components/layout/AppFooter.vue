@@ -1,10 +1,11 @@
 <template>
-  <footer class="border-t border-border px-15 py-15 max-md:px-6 max-md:py-10 bg-black">
+  <footer class="border-t border-gray-200 dark:border-border px-15 py-15 max-md:px-6 max-md:py-10 bg-white dark:bg-black">
     <div
       class="mx-auto flex max-w-[1400px] items-center justify-between max-md:flex-col max-md:gap-6 max-md:text-center"
     >
       <span
-        class="font-body text-[12px] tracking-[0.05em] text-muted"
+        class="font-body text-[12px] tracking-[0.05em]"
+        style="color: var(--muted)"
       >
         © 2026 PT SIMBU TEKNOLOGI INDONESIA
       </span>

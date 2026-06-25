@@ -1,11 +1,11 @@
 <template>
   <section
-    class="border-t border-b border-border overflow-hidden py-4 bg-black"
+    class="border-t border-b border-gray-200 dark:border-border overflow-hidden py-4 bg-white dark:bg-black"
   >
     <div class="marquee-track">
       <div class="flex shrink-0 items-center">
         <span v-for="(item, i) in items" :key="'a-' + i" class="marquee-item">
-          <span class="text-[10px] text-muted opacity-40">•</span>
+          <span class="text-[10px] opacity-40" style="color: var(--muted)">•</span>
           {{ item }}
         </span>
       </div>

@@ -1,12 +1,18 @@
 <template>
-  <section id="services" class="services section-padding bg-black">
+  <section
+    id="services"
+    class="services section-padding bg-white dark:bg-black"
+  >
     <div class="mx-auto max-w-[1400px]">
       <!-- Header -->
       <div class="services-header reveal">
         <div>
           <span class="section-tag">What We Do</span>
           <h2 class="section-title">
-            Our <span class="text-white font-extrabold">Services</span>
+            Our
+            <span class="font-extrabold" style="color: var(--text)"
+              >Services</span
+            >
           </h2>
         </div>
         <p
@@ -35,10 +41,13 @@
               {{ String(services.length).padStart(2, "0") }}</span
             >
           </div>
-          <h3 class="font-body text-lg font-bold text-white mt-4">
+          <h3
+            class="font-body text-lg font-bold mt-4"
+            style="color: var(--text)"
+          >
             {{ service.title }}
           </h3>
-          <p class="text-sm leading-relaxed text-muted mb-6">
+          <p class="text-sm leading-relaxed mb-6" style="color: var(--muted)">
             {{ service.desc }}
           </p>
           <div class="service-arrow">
@@ -115,7 +124,7 @@ const services = [
 /* Card */
 .service-card {
   position: relative;
-  background: #0a0a0a;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   padding: 32px;
   border-radius: 8px;
@@ -129,14 +138,14 @@ const services = [
 }
 
 .service-card:hover {
-  border-color: #333333;
-  background-color: #0c0c0c;
+  border-color: var(--border-red);
+  background-color: var(--bg2);
 }
 
 .service-icon-box {
   width: 44px;
   height: 44px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--steel-dim);
   border: 1px solid var(--border);
   border-radius: 6px;
   display: flex;
@@ -164,8 +173,8 @@ const services = [
 
 .service-card:hover .service-arrow {
   transform: translate(2px, -2px);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text);
+  border-color: var(--border-red);
 }
 
 /* Responsive */

@@ -1,15 +1,15 @@
 <template>
   <section
-    class="section-padding relative flex items-center justify-center overflow-hidden border-t border-border text-center bg-black"
+    class="section-padding relative flex items-center justify-center overflow-hidden dark:border-border text-center bg-white dark:bg-black"
   >
     <div class="cta-glow"></div>
     <div class="relative z-2 flex flex-col items-center gap-6 reveal">
       <span class="section-tag">Get Started</span>
       <h2 class="cta-title">
         Ready to Upgrade Your<br />
-        <span class="text-white">IT Infrastructure?</span>
+        <span style="color: var(--text)">IT Infrastructure?</span>
       </h2>
-      <p class="max-w-[420px] text-[15px] text-muted">
+      <p class="max-w-[420px] text-[15px]" style="color: var(--muted)">
         Let's talk about how Simbu can accelerate your business.
       </p>
       <a
@@ -42,7 +42,11 @@
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.03), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.03),
+    transparent 70%
+  );
   pointer-events: none;
 }
 
@@ -75,7 +79,9 @@
   font-weight: 500;
   font-size: 14px;
   border-radius: 6px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .cta-button:hover {

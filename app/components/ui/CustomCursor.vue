@@ -24,7 +24,7 @@ const { cursorX, cursorY, ringX, ringY, isHovering } = useCursor();
 .cursor-dot {
   width: 6px;
   height: 6px;
-  background: #ffffff;
+  background: var(--text);
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -36,7 +36,7 @@ const { cursorX, cursorY, ringX, ringY, isHovering } = useCursor();
 .cursor-ring {
   width: 24px;
   height: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--border);
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -51,7 +51,7 @@ const { cursorX, cursorY, ringX, ringY, isHovering } = useCursor();
 }
 
 .cursor-ring.hovering {
-  border-color: rgba(255, 255, 255, 0.6);
+  border-color: var(--text);
   opacity: 0.9;
 }
 </style>

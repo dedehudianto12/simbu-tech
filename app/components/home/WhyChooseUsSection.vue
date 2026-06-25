@@ -1,5 +1,5 @@
 <template>
-  <section id="why-choose-us" class="why-choose-us bg-black">
+  <section id="why-choose-us" class="why-choose-us">
     <div class="mx-auto max-w-[1400px]">
       <!-- Eyebrow + Heading -->
       <span class="section-tag">Why Simbu</span>
@@ -62,6 +62,7 @@ const reasons = [
 <style scoped>
 .why-choose-us {
   padding: 100px 60px;
+  background: var(--bg);
 }
 
 @media (max-width: 768px) {
@@ -99,7 +100,7 @@ const reasons = [
 }
 
 .card {
-  background: #0a0a0a;
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 28px 24px;
@@ -112,8 +113,8 @@ const reasons = [
 }
 
 .card:hover {
-  border-color: #333333;
-  background-color: #0c0c0c;
+  border-color: var(--border-red);
+  background-color: var(--bg2);
 }
 
 .index {
@@ -126,14 +127,14 @@ const reasons = [
 .icon-box {
   width: 36px;
   height: 36px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--steel-dim);
   border: 1px solid var(--border);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  color: #ffffff;
+  color: var(--text);
 }
 
 .card-title {
@@ -141,7 +142,7 @@ const reasons = [
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
-  color: #ffffff;
+  color: var(--text);
 }
 
 .card-desc {

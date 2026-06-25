@@ -5,6 +5,7 @@
     <HomeServicesSection />
     <HomeWhyChooseUsSection />
     <HomeClientsSection />
+    <HomeProcessSection />
     <HomeAboutSection />
     <HomeCtaSection />
   </div>

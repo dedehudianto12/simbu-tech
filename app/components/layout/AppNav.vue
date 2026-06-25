@@ -1,24 +1,32 @@
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 h-[72px] z-100 border-b border-border bg-black/70 backdrop-blur-[12px]"
+    class="fixed top-0 left-0 right-0 h-[72px] z-100 border-b border-gray-200 dark:border-border bg-white/70 dark:bg-black/70 backdrop-blur-[12px]"
   >
     <div
-      class="mx-auto flex h-full max-w-[1400px] items-center justify-between px-15 max-md:px-6"
+      class="mx-auto flex h-full max-w-[1400px] items-center justify-between max-2xl:px-15 max-md:px-6 max-[480px]:px-4"
     >
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2">
-        <svg class="w-5 h-5 text-white" viewBox="0 0 100 100" fill="currentColor">
+        <svg
+          class="w-5 h-5 text-[#111] dark:text-white"
+          viewBox="0 0 100 100"
+          fill="currentColor"
+        >
           <polygon points="50,15 90,85 10,85" />
         </svg>
-        <span class="font-display text-sm font-bold tracking-[0.2em] text-white">
-          SIMBU<span class="text-muted font-normal">TECH</span>
+        <span
+          class="font-display text-sm font-bold tracking-[0.2em] text-[#111] dark:text-white"
+        >
+          SIMBU<span class="font-normal" style="color: var(--muted)">TECH</span>
         </span>
       </a>
 
       <!-- Center Links -->
       <div class="flex gap-8 max-md:hidden">
         <a href="/#services" class="nav-link">Services</a>
+        <a href="/#why-choose-us" class="nav-link">Why Us</a>
         <a href="/#clients" class="nav-link">Clients</a>
+        <a href="/#process" class="nav-link">Process</a>
         <a href="/#about" class="nav-link">About</a>
       </div>
 
@@ -91,7 +99,9 @@ const mobileOpen = ref(false);
   padding: 8px 18px;
   border-radius: 6px;
   font-weight: 500;
-  transition: background 0.2s ease, opacity 0.2s ease;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .nav-cta:hover {
@@ -154,9 +164,21 @@ const mobileOpen = ref(false);
   flex-direction: column;
   gap: 24px;
   padding: 32px 60px;
-  background: rgba(0, 0, 0, 0.95);
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .nav-mobile {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-mobile {
+    padding: 32px 16px;
+  }
 }
 
 .nav-mobile.open {
