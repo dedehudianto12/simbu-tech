@@ -106,16 +106,37 @@ const chartOption = shallowRef({});
 
 // Real-world coordinates [Longitude, Latitude]
 const geoCoordMap = {
+  // --- Existing Cities ---
   Jakarta: [106.8456, -6.2088],
   Surabaya: [112.7521, -7.2504],
-  Medan: [98.6722, 3.5952],
-  Makassar: [119.4327, -5.1476],
   Denpasar: [115.2167, -8.65],
   Banjarmasin: [114.5901, -3.3194],
   Balikpapan: [116.8252, -1.2379],
+
+  // --- SUMATRA ---
+  Medan: [98.6722, 3.5952],
+  Pekanbaru: [101.4478, 0.507],
+  Padang: [100.3719, -0.9471],
+  Palembang: [104.7565, -2.9909],
+  "Bandar Lampung": [105.2615, -5.4292],
+
+  // --- SULAWESI ---
+  Makassar: [119.4327, -5.1476],
+  Palu: [119.8707, -0.8917],
+  Kendari: [122.5149, -3.9722],
+  Manado: [124.8481, 1.4748],
+
+  // --- MALUKU ---
+  Ambon: [128.1906, -3.6547],
+  Ternate: [127.3813, 0.7891],
+
+  // --- PAPUA ---
+  Sorong: [131.2516, -0.8762],
+  Jayapura: [140.7181, -2.5413],
+  Merauke: [140.407, -8.5071],
 };
 
-// Format Nodes
+// Format Nodes (Automatically handles all new cities added above)
 const nodeData = Object.keys(geoCoordMap).map((name) => ({
   name: name,
   value: geoCoordMap[name],
@@ -123,12 +144,33 @@ const nodeData = Object.keys(geoCoordMap).map((name) => ({
 
 // Format Links (Origin -> Destination)
 const lineData = [
+  // Core Mainframes / Java Base Links
   { coords: [geoCoordMap["Jakarta"], geoCoordMap["Surabaya"]] },
-  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Medan"]] },
-  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Makassar"]] },
-  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Banjarmasin"]] },
   { coords: [geoCoordMap["Surabaya"], geoCoordMap["Denpasar"]] },
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Banjarmasin"]] },
   { coords: [geoCoordMap["Banjarmasin"], geoCoordMap["Balikpapan"]] },
+
+  // Sumatra Sub-Network (Trunk lines from Jakarta + Regional links)
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Bandar Lampung"]] },
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Palembang"]] },
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Medan"]] },
+  { coords: [geoCoordMap["Medan"], geoCoordMap["Pekanbaru"]] },
+  { coords: [geoCoordMap["Medan"], geoCoordMap["Padang"]] },
+
+  // Sulawesi Sub-Network (Makassar acts as the East Indonesia Backbone)
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Makassar"]] },
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Palu"]] },
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Kendari"]] },
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Manado"]] },
+
+  // Maluku Sub-Network
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Ambon"]] },
+  { coords: [geoCoordMap["Ambon"], geoCoordMap["Ternate"]] },
+
+  // Papua Sub-Network
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Sorong"]] },
+  { coords: [geoCoordMap["Sorong"], geoCoordMap["Jayapura"]] },
+  { coords: [geoCoordMap["Jayapura"], geoCoordMap["Merauke"]] },
 ];
 
 onMounted(async () => {
