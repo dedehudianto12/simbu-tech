@@ -1,155 +1,77 @@
 <template>
   <section
-    class="mx-auto max-w-[1400px] hero relative flex min-h-screen items-center pt-[72px] max-md:flex-col max-md:justify-center max-md:px-6"
+    class="hero relative flex min-h-screen items-center overflow-hidden pt-[72px] max-md:flex-col max-md:justify-center px-15 max-md:px-6 max-[480px]:px-4"
   >
-    <!-- Scanline overlay -->
-    <div class="hero-scanlines"></div>
-
-    <!-- Decorative SVG -->
-    <svg
-      class="hero-svg"
-      width="700"
-      height="700"
-      viewBox="0 0 500 500"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      class="hero-content relative z-2 max-w-[560px] flex-shrink-0"
+      style="flex: 0 0 40%"
     >
-      <!-- Outer dashed ring — steel -->
-      <circle
-        cx="250"
-        cy="250"
-        r="240"
-        stroke="#8A9BAE"
-        stroke-width="1"
-        stroke-dasharray="4 8"
-        opacity="0.5"
-      />
-      <!-- Mid dashed ring — steel -->
-      <circle
-        cx="250"
-        cy="250"
-        r="180"
-        stroke="#8A9BAE"
-        stroke-width="0.8"
-        stroke-dasharray="2 12"
-        opacity="0.4"
-      />
-      <!-- Inner solid ring — red -->
-      <circle
-        cx="250"
-        cy="250"
-        r="120"
-        stroke="#E31E24"
-        stroke-width="1.5"
-        opacity="0.7"
-      />
-      <!-- Core ring — red with fill -->
-      <circle
-        cx="250"
-        cy="250"
-        r="60"
-        stroke="#E31E24"
-        stroke-width="2"
-        fill="rgba(227,30,36,0.08)"
-        opacity="0.8"
-      />
-      <!-- Hexagon polygon — steel -->
-      <polygon
-        points="250,10 490,140 490,360 250,490 10,360 10,140"
-        stroke="#8A9BAE"
-        stroke-width="1"
-        fill="none"
-        stroke-dasharray="6 10"
-        opacity="0.5"
-      />
-      <!-- Vertex dots — red -->
-      <circle cx="250" cy="10" r="5" fill="#E31E24" opacity="0.9" />
-      <circle cx="490" cy="140" r="4" fill="#8A9BAE" opacity="0.7" />
-      <circle cx="490" cy="360" r="4" fill="#8A9BAE" opacity="0.7" />
-      <circle cx="250" cy="490" r="5" fill="#E31E24" opacity="0.9" />
-      <circle cx="10" cy="360" r="4" fill="#8A9BAE" opacity="0.7" />
-      <circle cx="10" cy="140" r="4" fill="#8A9BAE" opacity="0.7" />
-      <!-- Cross lines -->
-      <line
-        x1="250"
-        y1="10"
-        x2="250"
-        y2="490"
-        stroke="#E31E24"
-        stroke-width="0.5"
-        opacity="0.4"
-      />
-      <line
-        x1="10"
-        y1="250"
-        x2="490"
-        y2="250"
-        stroke="#8A9BAE"
-        stroke-width="0.5"
-        opacity="0.3"
-      />
-    </svg>
-
-    <div class="hero-content relative z-2 max-w-[720px]">
-      <!-- Tag -->
-      <div class="mb-8 flex items-center gap-3">
-        <span class="block h-px w-10 bg-red opacity-60"></span>
+      <div class="mb-6 flex items-center gap-3">
+        <span class="block h-px w-8 bg-[#333] dark:bg-white opacity-40"></span>
         <span
-          class="font-display text-[11px] uppercase tracking-[0.2em] text-red"
+          class="font-body text-[11px] uppercase tracking-[0.2em]"
+          style="color: var(--muted)"
           >Jakarta-based IT Solutions</span
         >
-        <span class="hero-tag-dot"></span>
       </div>
 
-      <!-- Headline -->
       <h1 class="hero-headline">
-        <span class="text-text">WE DELIVER</span>
-        <span class="hero-line-outline">BUSINESS</span>
-        <span class="hero-line-red">VALUE.</span>
+        <span class="text-[#111] dark:text-white">WE DELIVER</span>
+        <span class="hero-gradient-text">BUSINESS VALUE.</span>
       </h1>
 
-      <!-- Description -->
-      <p class="mb-10 max-w-[520px] text-[15px] leading-[1.7] text-muted">
+      <p
+        class="mb-10 max-w-[520px] text-[15px] leading-[1.7]"
+        style="color: var(--muted)"
+      >
         End-to-end IT solutions for enterprise — from infrastructure and
         cybersecurity to custom software development.
       </p>
 
-      <!-- CTAs -->
       <div class="flex items-center gap-4 max-md:flex-col max-md:items-start">
-        <a href="/#services" class="hero-btn-primary"
-          >Explore Services
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M3 8h10M9 4l4 4-4 4"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </a>
+        <a href="/#services" class="hero-btn-primary">Explore Services </a>
         <a
           href="https://drive.google.com/file/d/1Pu5JPHNetO5B14c6C0Kixc9ObgusUZgv/view"
           target="_blank"
           rel="noopener"
           class="hero-btn-secondary"
         >
-          ↓ Company Profile
+          Company Profile
         </a>
       </div>
     </div>
 
-    <!-- Stats -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-map-glow"></div>
+
+      <ClientOnly>
+        <v-chart
+          v-if="isMapLoaded"
+          class="chart"
+          :option="chartOption"
+          autoresize
+        />
+
+        <template #fallback>
+          <div
+            class="flex h-full items-center justify-center text-[var(--muted)] text-sm tracking-widest opacity-50 animate-pulse"
+          >
+            INITIALIZING NETWORK...
+          </div>
+        </template>
+      </ClientOnly>
+    </div>
+
     <div class="hero-stats">
-      <div class="flex flex-col items-end max-lg:items-start">
+      <div class="flex flex-col items-end max-lg:items-start stat-item">
         <span class="hero-stat-num">12+</span>
         <span class="hero-stat-label">Enterprise Clients</span>
       </div>
-      <div class="flex flex-col items-end max-lg:items-start">
+      <div class="flex flex-col items-end max-lg:items-start stat-item">
         <span class="hero-stat-num">4</span>
         <span class="hero-stat-label">Core Services</span>
       </div>
-      <div class="flex flex-col items-end max-lg:items-start">
+      <div class="flex flex-col items-end max-lg:items-start stat-item">
         <span class="hero-stat-num">24/7</span>
         <span class="hero-stat-label">IT Support</span>
       </div>
@@ -157,53 +79,242 @@
   </section>
 </template>
 
+<script setup>
+import { ref, shallowRef, provide, onMounted } from "vue";
+import { use } from "echarts/core";
+import { CanvasRenderer } from "echarts/renderers";
+import { GeoComponent, TooltipComponent } from "echarts/components";
+import { LinesChart, EffectScatterChart } from "echarts/charts";
+import * as echarts from "echarts/core";
+import VChart, { THEME_KEY } from "vue-echarts";
+
+// Register required ECharts modules
+use([
+  CanvasRenderer,
+  GeoComponent,
+  TooltipComponent,
+  LinesChart,
+  EffectScatterChart,
+]);
+
+// Set ECharts theme to dark
+provide(THEME_KEY, "dark");
+
+// State variables
+const isMapLoaded = ref(false);
+const chartOption = shallowRef({});
+
+// Real-world coordinates [Longitude, Latitude]
+const geoCoordMap = {
+  // --- Existing Cities ---
+  Jakarta: [106.8456, -6.2088],
+  Surabaya: [112.7521, -7.2504],
+  Denpasar: [115.2167, -8.65],
+  Banjarmasin: [114.5901, -3.3194],
+  Balikpapan: [116.8252, -1.2379],
+
+  // --- SUMATRA ---
+  Medan: [98.6722, 3.5952],
+  Pekanbaru: [101.4478, 0.507],
+  Padang: [100.3719, -0.9471],
+  Palembang: [104.7565, -2.9909],
+  "Bandar Lampung": [105.2615, -5.4292],
+
+  // --- SULAWESI ---
+  Makassar: [119.4327, -5.1476],
+  Palu: [119.8707, -0.8917],
+  Kendari: [122.5149, -3.9722],
+  Manado: [124.8481, 1.4748],
+
+  // --- MALUKU ---
+  Ambon: [128.1906, -3.6547],
+  Ternate: [127.3813, 0.7891],
+
+  // --- PAPUA ---
+  Sorong: [131.2516, -0.8762],
+  Jayapura: [140.7181, -2.5413],
+  Merauke: [140.407, -8.5071],
+};
+
+// Format Nodes (Automatically handles all new cities added above)
+const nodeData = Object.keys(geoCoordMap).map((name) => ({
+  name: name,
+  value: geoCoordMap[name],
+}));
+
+// Format Links (Origin -> Destination)
+const lineData = [
+  // Core Mainframes / Java Base Links
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Surabaya"]] },
+  { coords: [geoCoordMap["Surabaya"], geoCoordMap["Denpasar"]] },
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Banjarmasin"]] },
+  { coords: [geoCoordMap["Banjarmasin"], geoCoordMap["Balikpapan"]] },
+
+  // Sumatra Sub-Network (Trunk lines from Jakarta + Regional links)
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Bandar Lampung"]] },
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Palembang"]] },
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Medan"]] },
+  { coords: [geoCoordMap["Medan"], geoCoordMap["Pekanbaru"]] },
+  { coords: [geoCoordMap["Medan"], geoCoordMap["Padang"]] },
+
+  // Sulawesi Sub-Network (Makassar acts as the East Indonesia Backbone)
+  { coords: [geoCoordMap["Jakarta"], geoCoordMap["Makassar"]] },
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Palu"]] },
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Kendari"]] },
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Manado"]] },
+
+  // Maluku Sub-Network
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Ambon"]] },
+  { coords: [geoCoordMap["Ambon"], geoCoordMap["Ternate"]] },
+
+  // Papua Sub-Network
+  { coords: [geoCoordMap["Makassar"], geoCoordMap["Sorong"]] },
+  { coords: [geoCoordMap["Sorong"], geoCoordMap["Jayapura"]] },
+  { coords: [geoCoordMap["Jayapura"], geoCoordMap["Merauke"]] },
+];
+
+onMounted(async () => {
+  try {
+    // 1. Fetch the GeoJSON from the public folder using Nuxt's $fetch
+    const mapData = await $fetch("/map/indonesia-province.json");
+
+    // 2. Register the fetched map data
+    echarts.registerMap("indonesia", mapData);
+
+    // 3. Build the chart configuration
+    chartOption.value = {
+      backgroundColor: "transparent",
+
+      // Map Base Configuration
+      geo: {
+        map: "indonesia",
+        roam: false,
+        zoom: 1.2,
+        layoutCenter: ["55%", "50%"],
+        layoutSize: "100%",
+        itemStyle: {
+          areaColor: "#0f172a", // Very dark blue/slate
+          borderColor: "rgba(56, 189, 248, 0.25)", // Subtle neon blue stroke
+          borderWidth: 1,
+          shadowColor: "rgba(56, 189, 248, 0.4)",
+          shadowBlur: 15,
+        },
+        emphasis: {
+          itemStyle: {
+            areaColor: "#1e293b",
+            borderColor: "rgba(56, 189, 248, 0.8)",
+          },
+          label: { show: false },
+        },
+      },
+
+      series: [
+        // The Glowing Network Lines
+        {
+          type: "lines",
+          zlevel: 1,
+          effect: {
+            show: true,
+            period: 3, // Animation speed
+            trailLength: 0.5, // Length of the traveling data packet
+            color: "#fff",
+            symbolSize: 3,
+          },
+          lineStyle: {
+            color: "#38bdf8",
+            width: 1.5,
+            opacity: 0.3,
+            curveness: 0.25, // Smooth arcs over the map
+          },
+          data: lineData,
+        },
+        // The Pulsing Nodes (Cities)
+        {
+          type: "effectScatter",
+          coordinateSystem: "geo",
+          zlevel: 2,
+          rippleEffect: {
+            brushType: "stroke",
+            scale: 5,
+            period: 4,
+          },
+          itemStyle: {
+            color: "#38bdf8",
+            shadowBlur: 10,
+            shadowColor: "#38bdf8",
+          },
+          data: nodeData,
+          symbolSize: function (val, params) {
+            // Make the Jakarta Hub larger and pure white so it stands out
+            if (params.name === "Jakarta") return 8;
+            return 4;
+          },
+          emphasis: {
+            itemStyle: {
+              color: "#ffffff",
+            },
+          },
+        },
+      ],
+    };
+
+    // 4. Reveal the chart
+    isMapLoaded.value = true;
+  } catch (error) {
+    console.error(
+      "Failed to load map data from /map/indonesia-province.json:",
+      error,
+    );
+  }
+});
+</script>
+
 <style scoped>
-/* Scanlines */
-.hero-scanlines {
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.01) 3px,
-    rgba(0, 0, 0, 0.01) 4px
-  );
-  pointer-events: none;
+.hero {
+  background: var(--bg);
+}
+
+.hero-visual {
+  position: relative;
+  flex: 1;
+  height: 88vh;
+  min-height: 540px;
+  margin-right: -2vw;
   z-index: 1;
 }
 
-/* Decorative SVG */
-.hero-svg {
-  position: absolute;
-  right: -50px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 700px;
-  height: 700px;
-  opacity: 0.7;
-  animation: heroRotate 40s linear infinite;
-  pointer-events: none;
+.chart {
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes heroRotate {
-  from {
-    transform: translateY(-50%) rotate(0deg);
-  }
-  to {
-    transform: translateY(-50%) rotate(360deg);
-  }
+.hero-map-glow {
+  position: absolute;
+  left: 65%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(56, 189, 248, 0.08) 0%,
+    transparent 60%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Content fade-up */
 .hero-content {
-  animation: fadeUp 1s ease forwards;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 2;
 }
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -211,96 +322,71 @@
   }
 }
 
-/* Tag dot */
-.hero-tag-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--red);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(227, 30, 36, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(227, 30, 36, 0);
-  }
-}
-
-/* Headline */
 .hero-headline {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  font-size: clamp(52px, 7vw, 96px);
+  font-size: clamp(48px, 7vw, 92px);
   font-weight: 800;
   line-height: 1.05;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
 }
 
-.hero-line-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--steel);
-  opacity: 0.4;
+.hero-gradient-text {
+  background: linear-gradient(180deg, var(--text) 30%, var(--muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hero-line-red {
-  color: var(--red);
-  text-shadow: 0 0 40px rgba(227, 30, 36, 0.5);
-}
-
-/* Primary CTA */
 .hero-btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 36px;
-  background: var(--red);
-  color: #fff;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #ffffff;
+  color: #000000;
   text-decoration: none;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 12px) 0,
-    100% 12px,
-    100% 100%,
-    12px 100%,
-    0 calc(100% - 12px)
-  );
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 6px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .hero-btn-primary:hover {
-  box-shadow: 0 0 40px rgba(227, 30, 36, 0.45);
-  transform: translateY(-2px);
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-/* Secondary CTA */
 .hero-btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--muted);
+  padding: 12px 28px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
   text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 500;
   font-size: 14px;
-  letter-spacing: 0.05em;
-  transition: color 0.3s;
-  border-bottom: 1px solid transparent;
+  border-radius: 6px;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .hero-btn-secondary:hover {
-  color: var(--silver);
-  border-bottom-color: var(--steel);
+  border-color: var(--text);
+  background-color: var(--red-dim);
+  transform: translateY(-1px);
 }
 
-/* Stats */
 .hero-stats {
   position: absolute;
   right: 60px;
@@ -310,32 +396,44 @@
   z-index: 2;
 }
 
+.stat-item {
+  border-left: 1px solid var(--border);
+  padding-left: 20px;
+}
+
 .hero-stat-num {
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: 36px;
   font-weight: 700;
-  color: var(--red);
-  text-shadow: 10px 10px 40px rgba(227, 30, 36, 0.5);
+  color: var(--text);
   line-height: 1;
 }
 
 .hero-stat-label {
-  font-family: var(--font-display);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.05em;
   color: var(--muted);
   margin-top: 6px;
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .hero-svg {
-    width: 500px;
-    height: 500px;
-    right: -100px;
+@media (max-width: 1280px) {
+  .hero-visual {
+    flex: 0 0 50%;
+    height: 65vh;
+    min-height: 400px;
+    margin-right: 0;
   }
-
+}
+@media (max-width: 1024px) {
+  .hero-visual {
+    flex: 0 0 42%;
+    height: 45vh;
+    min-height: 280px;
+    margin-right: 0;
+    opacity: 0.8;
+  }
   .hero-stats {
     position: relative;
     right: auto;
@@ -344,26 +442,34 @@
     justify-content: flex-start;
   }
 }
-
 @media (max-width: 768px) {
-  .hero-svg {
-    width: 400px;
-    height: 400px;
-    right: -150px;
-    opacity: 0.08;
+  .hero-visual {
+    flex: 0 0 100%;
+    height: 320px;
+    min-height: auto;
+    order: 2;
+    opacity: 0.6;
+    margin-top: 48px;
   }
-
+  .hero-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
   .hero-headline {
     font-size: clamp(36px, 10vw, 52px);
   }
-
   .hero-stats {
-    gap: 32px;
+    gap: 24px;
     flex-wrap: wrap;
   }
-
   .hero-stat-num {
     font-size: 28px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-visual {
+    height: 240px;
+    opacity: 0.5;
   }
 }
 </style>

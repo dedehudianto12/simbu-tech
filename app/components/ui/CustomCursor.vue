@@ -22,24 +22,21 @@ const { cursorX, cursorY, ringX, ringY, isHovering } = useCursor();
 
 <style scoped>
 .cursor-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--red);
+  width: 6px;
+  height: 6px;
+  background: var(--text);
   border-radius: 50%;
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
   will-change: transform;
-  box-shadow:
-    0 0 12px var(--red-glow),
-    0 0 24px var(--red-dim);
 }
 
 .cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--red);
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--border);
   border-radius: 50%;
   position: fixed;
   top: 0;
@@ -48,12 +45,13 @@ const { cursorX, cursorY, ringX, ringY, isHovering } = useCursor();
   will-change: transform;
   transition:
     border-color 0.2s ease,
-    opacity 0.2s ease;
-  opacity: 0.5;
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  opacity: 0.6;
 }
 
 .cursor-ring.hovering {
-  border-color: rgba(227, 30, 36, 0.5);
-  opacity: 0.8;
+  border-color: var(--text);
+  opacity: 0.9;
 }
 </style>

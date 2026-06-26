@@ -9,8 +9,7 @@ export default defineNuxtConfig({
 
   googleFonts: {
     families: {
-      Oxanium: [300, 400, 600, 700, 800],
-      Syne: [400, 500, 700],
+      Inter: [300, 400, 500, 600, 700, 800],
     },
     display: "swap",
   },
@@ -25,6 +24,9 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
     head: {
       title: "Simbu Teknologi — We Deliver Business Value",
+      htmlAttrs: {
+        class: "dark",
+      },
       meta: [
         {
           name: "description",

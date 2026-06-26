@@ -1,17 +1,17 @@
 <template>
   <section
-    class="border-t border-b border-border overflow-hidden py-4 bg-[rgba(227,30,36,0.03)]"
+    class="border-t border-b border-gray-200 dark:border-border overflow-hidden py-4 bg-white dark:bg-black"
   >
     <div class="marquee-track">
       <div class="flex shrink-0 items-center">
         <span v-for="(item, i) in items" :key="'a-' + i" class="marquee-item">
-          <span class="text-[6px] text-red opacity-50">◆</span>
+          <span class="text-[10px] opacity-40" style="color: var(--muted)">•</span>
           {{ item }}
         </span>
       </div>
       <div class="flex shrink-0 items-center" aria-hidden="true">
         <span v-for="(item, i) in items" :key="'b-' + i" class="marquee-item">
-          <span class="text-[6px] text-red opacity-50">◆</span>
+          <span class="text-[10px] text-muted opacity-40">•</span>
           {{ item }}
         </span>
       </div>
@@ -35,7 +35,7 @@ const items = [
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 20s linear infinite;
+  animation: marqueeScroll 30s linear infinite;
 }
 
 @keyframes marqueeScroll {
@@ -48,15 +48,15 @@ const items = [
 }
 
 .marquee-item {
-  font-family: var(--font-display);
-  font-size: 11px;
-  letter-spacing: 0.2em;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--muted);
   white-space: nowrap;
-  padding: 0 24px;
+  padding: 0 32px;
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 </style>

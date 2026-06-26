@@ -1,15 +1,15 @@
 <template>
   <section
-    class="section-padding relative flex items-center justify-center overflow-hidden border-t border-border text-center"
+    class="section-padding relative flex items-center justify-center overflow-hidden dark:border-border text-center bg-white dark:bg-black"
   >
     <div class="cta-glow"></div>
     <div class="relative z-2 flex flex-col items-center gap-6 reveal">
       <span class="section-tag">Get Started</span>
       <h2 class="cta-title">
         Ready to Upgrade Your<br />
-        <span class="text-red">IT Infrastructure?</span>
+        <span style="color: var(--text)">IT Infrastructure?</span>
       </h2>
-      <p class="max-w-[420px] text-[15px] text-muted">
+      <p class="max-w-[420px] text-[15px]" style="color: var(--muted)">
         Let's talk about how Simbu can accelerate your business.
       </p>
       <a
@@ -39,57 +39,54 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(227, 30, 36, 0.06), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.03),
+    transparent 70%
+  );
   pointer-events: none;
 }
 
 .section-tag {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--red);
-  opacity: 0.6;
+  color: var(--muted);
 }
 
 .cta-title {
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 700;
   color: var(--text);
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .cta-button {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 36px;
-  background: var(--red);
-  color: #fff;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #ffffff;
+  color: #000000;
   text-decoration: none;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 12px) 0,
-    100% 12px,
-    100% 100%,
-    12px 100%,
-    0 calc(100% - 12px)
-  );
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 6px;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .cta-button:hover {
-  box-shadow: 0 0 40px rgba(227, 30, 36, 0.45);
-  transform: translateY(-2px);
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {

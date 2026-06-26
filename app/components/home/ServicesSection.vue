@@ -1,12 +1,18 @@
 <template>
-  <section id="services" class="services section-padding">
+  <section
+    id="services"
+    class="services section-padding bg-white dark:bg-black"
+  >
     <div class="mx-auto max-w-[1400px]">
       <!-- Header -->
       <div class="services-header reveal">
         <div>
           <span class="section-tag">What We Do</span>
           <h2 class="section-title">
-            Our <span class="text-red">Services</span>
+            Our
+            <span class="font-extrabold" style="color: var(--text)"
+              >Services</span
+            >
           </h2>
         </div>
         <p
@@ -18,29 +24,43 @@
       </div>
 
       <!-- Cards Grid -->
-      <div class="grid grid-cols-2 gap-0.5 max-md:grid-cols-1">
+      <div class="grid grid-cols-2 gap-4 max-md:grid-cols-1">
         <div
           v-for="(service, index) in services"
           :key="service.title"
           class="service-card reveal"
-          :style="{ transitionDelay: `${index * 0.1}s` }"
+          :style="{ transitionDelay: `${index * 0.05}s` }"
         >
-          <div class="service-card-highlight"></div>
-          <span
-            class="font-display text-[11px] tracking-[0.1em] text-red opacity-60"
-            >{{ String(index + 1).padStart(2, "0") }} /
-            {{ String(services.length).padStart(2, "0") }}</span
-          >
-          <div class="service-icon-hex">
-            <span class="text-xl">{{ service.icon }}</span>
+          <div class="flex justify-between items-start">
+            <div class="service-icon-box">
+              <span class="text-xl">{{ service.icon }}</span>
+            </div>
+            <span
+              class="font-body text-[12px] tracking-[0.05em] text-muted opacity-60"
+              >{{ String(index + 1).padStart(2, "0") }} /
+              {{ String(services.length).padStart(2, "0") }}</span
+            >
           </div>
-          <h3 class="font-display text-xl font-bold text-text">
+          <h3
+            class="font-body text-lg font-bold mt-4"
+            style="color: var(--text)"
+          >
             {{ service.title }}
           </h3>
-          <p class="flex-1 text-sm leading-relaxed text-muted">
+          <p class="text-sm leading-relaxed mb-6" style="color: var(--muted)">
             {{ service.desc }}
           </p>
-          <div class="service-arrow">→</div>
+          <div class="service-arrow">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -78,27 +98,27 @@ const services = [
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   gap: 40px;
 }
 
 .section-tag {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--red);
-  opacity: 0.6;
+  color: var(--muted);
   margin-bottom: 12px;
   display: block;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(32px, 4vw, 42px);
   font-weight: 700;
   color: var(--text);
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 /* Card */
@@ -106,43 +126,28 @@ const services = [
   position: relative;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  padding: 40px;
+  padding: 32px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  overflow: hidden;
   transition:
-    background 0.4s ease,
-    opacity 0.8s ease,
-    transform 0.8s ease;
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    opacity 0.8s ease;
 }
 
 .service-card:hover {
-  background: rgba(227, 30, 36, 0.04);
+  border-color: var(--border-red);
+  background-color: var(--bg2);
 }
 
-/* Top highlight sweep */
-.service-card-highlight {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--red), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.service-card:hover .service-card-highlight {
-  transform: translateX(100%);
-}
-
-.service-icon-hex {
-  width: 52px;
-  height: 52px;
-  background: rgba(227, 30, 36, 0.05);
+.service-icon-box {
+  width: 44px;
+  height: 44px;
+  background: var(--steel-dim);
   border: 1px solid var(--border);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,26 +155,26 @@ const services = [
 
 .service-arrow {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
-  width: 36px;
-  height: 36px;
+  bottom: 24px;
+  right: 24px;
+  width: 28px;
+  height: 28px;
   border: 1px solid var(--border);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
   color: var(--muted);
   transition:
-    transform 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .service-card:hover .service-arrow {
-  transform: rotate(45deg);
-  color: var(--red);
-  border-color: rgba(227, 30, 36, 0.3);
+  transform: translate(2px, -2px);
+  color: var(--text);
+  border-color: var(--border-red);
 }
 
 /* Responsive */
@@ -177,6 +182,7 @@ const services = [
   .services-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
 }
 </style>
