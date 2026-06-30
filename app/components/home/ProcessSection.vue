@@ -29,9 +29,7 @@
           :style="{ transitionDelay: `${index * 0.08}s` }"
         >
           <div class="timeline-marker">
-            <span class="timeline-number">{{
-              String(index + 1).padStart(2, "0")
-            }}</span>
+            <span class="timeline-number">{{ index + 1 }}</span>
           </div>
           <div class="timeline-connector" v-if="index < steps.length - 1"></div>
           <div class="timeline-content">
@@ -70,25 +68,6 @@ const steps = [
 </script>
 
 <style scoped>
-.section-tag {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-  display: block;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 42px);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
 /* --- Horizontal Timeline --- */
 .timeline {
   display: flex;

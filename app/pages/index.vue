@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="pageRef">
     <HomeHeroSection />
     <HomeMarqueeSection />
     <HomeServicesSection />
@@ -12,7 +12,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useScrollReveal } from "~/composables/useScrollReveal";
 
-useScrollReveal();
+const pageRef = ref<HTMLElement | null>(null);
+useScrollReveal(pageRef);
 </script>

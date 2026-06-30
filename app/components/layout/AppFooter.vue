@@ -15,9 +15,9 @@
         <a href="mailto:sales@simbu.co.id" class="footer-link"
           >sales@simbu.co.id</a
         >
-        <span class="text-[#333]">/</span>
+        <span style="color: var(--muted)">/</span>
         <a href="tel:+62818838183" class="footer-link">+62 818838183</a>
-        <span class="text-[#333]">/</span>
+        <span style="color: var(--muted)">/</span>
         <a href="/#services" class="footer-link">Services</a>
       </div>
     </div>

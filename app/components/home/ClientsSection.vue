@@ -20,12 +20,19 @@
           class="client-cell reveal"
           :style="{ transitionDelay: `${i * 0.03}s` }"
         >
-          <img
-            :src="client.logo"
-            :alt="client.name"
-            class="client-logo"
-            loading="lazy"
-          />
+          <picture>
+            <source
+              v-if="client.webp"
+              :srcset="client.webp"
+              type="image/webp"
+            />
+            <img
+              :src="client.logo"
+              :alt="client.name"
+              class="client-logo"
+              loading="lazy"
+            />
+          </picture>
         </div>
       </div>
     </div>
@@ -34,53 +41,25 @@
 
 <script setup lang="ts">
 const clients = [
-  { name: "United Tractors", logo: "/clients-logo/united_tractors.png" },
-  { name: "GYS", logo: "/clients-logo/gys.png" },
+  { name: "United Tractors", logo: "/clients-logo/united_tractors.png", webp: "/clients-logo/united_tractors.webp" },
+  { name: "GYS", logo: "/clients-logo/gys.png", webp: "/clients-logo/gys.webp" },
   { name: "BSI", logo: "/clients-logo/bsi.svg" },
-  { name: "AEON Mall", logo: "/clients-logo/aeon_mall.png" },
+  { name: "AEON Mall", logo: "/clients-logo/aeon_mall.png", webp: "/clients-logo/aeon_mall.webp" },
   { name: "Kinden Indonesia", logo: "/clients-logo/kinden.svg" },
-  { name: "Pelindo", logo: "/clients-logo/pelindo.png" },
-  { name: "PT Surya Madistrindo", logo: "/clients-logo/surya_madistrindo.png" },
-  { name: "Otsuka", logo: "/clients-logo/otsuka.png" },
-  { name: "JICT", logo: "/clients-logo/jict.png" },
-  { name: "Vopak", logo: "/clients-logo/vopak.png" },
-  { name: "DJPL", logo: "/clients-logo/djpl.png" },
-  {
-    name: "Pelindo Multi Terminal",
-    logo: "/clients-logo/pelindo_multi_terminal.png",
-  },
-  { name: "ENC", logo: "/clients-logo/enc.png" },
-  {
-    name: "Pelindo Terminal Petikemas",
-    logo: "/clients-logo/pelindo_terminal_petikemas.png",
-  },
-  {
-    name: "PMT Non-Petikemas",
-    logo: "/clients-logo/pelindo_multi_terminal_non_peti_kemas.png",
-  },
+  { name: "Pelindo", logo: "/clients-logo/pelindo.png", webp: "/clients-logo/pelindo.webp" },
+  { name: "PT Surya Madistrindo", logo: "/clients-logo/surya_madistrindo.png", webp: "/clients-logo/surya_madistrindo.webp" },
+  { name: "Otsuka", logo: "/clients-logo/otsuka.png", webp: "/clients-logo/otsuka.webp" },
+  { name: "JICT", logo: "/clients-logo/jict.png", webp: "/clients-logo/jict.webp" },
+  { name: "Vopak", logo: "/clients-logo/vopak.png", webp: "/clients-logo/vopak.webp" },
+  { name: "DJPL", logo: "/clients-logo/djpl.png", webp: "/clients-logo/djpl.webp" },
+  { name: "Pelindo Multi Terminal", logo: "/clients-logo/pelindo_multi_terminal.png", webp: "/clients-logo/pelindo_multi_terminal.webp" },
+  { name: "ENC", logo: "/clients-logo/enc.png", webp: "/clients-logo/enc.webp" },
+  { name: "Pelindo Terminal Petikemas", logo: "/clients-logo/pelindo_terminal_petikemas.png", webp: "/clients-logo/pelindo_terminal_petikemas.webp" },
+  { name: "PMT Non-Petikemas", logo: "/clients-logo/pelindo_multi_terminal_non_peti_kemas.png", webp: "/clients-logo/pelindo_multi_terminal_non_peti_kemas.webp" },
 ];
 </script>
 
 <style scoped>
-.section-tag {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-  display: block;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 42px);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
 .client-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -92,6 +71,12 @@ const clients = [
 @media (max-width: 1024px) {
   .client-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

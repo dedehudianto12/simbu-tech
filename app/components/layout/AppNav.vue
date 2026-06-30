@@ -55,8 +55,14 @@
       <a href="/#services" class="nav-link" @click="mobileOpen = false"
         >Services</a
       >
+      <a href="/#why-choose-us" class="nav-link" @click="mobileOpen = false"
+        >Why Us</a
+      >
       <a href="/#clients" class="nav-link" @click="mobileOpen = false"
         >Clients</a
+      >
+      <a href="/#process" class="nav-link" @click="mobileOpen = false"
+        >Process</a
       >
       <a href="/#about" class="nav-link" @click="mobileOpen = false">About</a>
       <a
@@ -105,7 +111,8 @@ const mobileOpen = ref(false);
 }
 
 .nav-cta:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: #e5e5e5;
+  transform: translateY(-1px);
 }
 
 /* Mobile Toggle */

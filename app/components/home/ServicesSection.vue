@@ -33,7 +33,67 @@
         >
           <div class="flex justify-between items-start">
             <div class="service-icon-box">
-              <span class="text-xl">{{ service.icon }}</span>
+              <svg
+                v-if="service.icon === 'network'"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="5" r="2" />
+                <circle cx="5" cy="19" r="2" />
+                <circle cx="19" cy="19" r="2" />
+                <line x1="12" y1="7" x2="12" y2="10" />
+                <line x1="11" y1="13" x2="5" y2="17" />
+                <line x1="13" y1="13" x2="19" y2="17" />
+              </svg>
+              <svg
+                v-else-if="service.icon === 'shield'"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M9 12l2 2 4-4" />
+              </svg>
+              <svg
+                v-else-if="service.icon === 'antenna'"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 17a7 7 0 0 1 14 0" />
+                <path d="M8 14a4 4 0 0 1 8 0" />
+                <circle cx="12" cy="11" r="2" />
+              </svg>
+              <svg
+                v-else
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
             </div>
             <span
               class="font-body text-[12px] tracking-[0.05em] text-muted opacity-60"
@@ -70,22 +130,22 @@
 <script setup lang="ts">
 const services = [
   {
-    icon: "🖧",
+    icon: "network",
     title: "IT Infrastructure & Communication",
     desc: "Design, deploy, and maintain robust network and communication systems for enterprise operations.",
   },
   {
-    icon: "🛡",
+    icon: "shield",
     title: "Cybersecurity",
     desc: "Protect your digital assets with comprehensive security assessments, monitoring, and incident response.",
   },
   {
-    icon: "📡",
+    icon: "antenna",
     title: "Area Infrastructure",
     desc: "End-to-end infrastructure solutions for industrial areas, ports, and commercial facilities.",
   },
   {
-    icon: "⌨",
+    icon: "code",
     title: "Software Development",
     desc: "Custom software solutions tailored to your business processes — from web apps to enterprise systems.",
   },
@@ -100,25 +160,6 @@ const services = [
   align-items: flex-end;
   margin-bottom: 48px;
   gap: 40px;
-}
-
-.section-tag {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-  display: block;
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 42px);
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
 }
 
 /* Card */

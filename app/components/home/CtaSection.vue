@@ -50,14 +50,6 @@
   pointer-events: none;
 }
 
-.section-tag {
-  font-family: var(--font-body);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 .cta-title {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 42px);

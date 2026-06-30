@@ -1,7 +1,7 @@
 <template>
   <canvas
     ref="canvasRef"
-    class="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none"
+    class="fixed top-0 left-0 w-screen h-screen z-0 pointer-events-none opacity-40"
   ></canvas>
 </template>
 
@@ -10,6 +10,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 let resizeHandler: (() => void) | null = null;
+let rafId: number | null = null;
 
 function draw() {
   const canvas = canvasRef.value;
@@ -30,7 +31,6 @@ function draw() {
   const step = 60;
 
   // Draw grid lines
-  canvas.style.opacity = "0.4";
 
   ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
   ctx.lineWidth = 0.5;
@@ -63,11 +63,15 @@ function draw() {
 
 onMounted(() => {
   draw();
-  resizeHandler = () => draw();
+  resizeHandler = () => {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(draw);
+  };
   window.addEventListener("resize", resizeHandler);
 });
 
 onUnmounted(() => {
+  if (rafId) cancelAnimationFrame(rafId);
   if (resizeHandler) {
     window.removeEventListener("resize", resizeHandler);
   }

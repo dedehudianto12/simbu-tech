@@ -11,7 +11,7 @@
       </div>
       <div class="flex shrink-0 items-center" aria-hidden="true">
         <span v-for="(item, i) in items" :key="'b-' + i" class="marquee-item">
-          <span class="text-[10px] text-muted opacity-40">•</span>
+          <span class="text-[10px] opacity-40" style="color: var(--muted)">•</span>
           {{ item }}
         </span>
       </div>
